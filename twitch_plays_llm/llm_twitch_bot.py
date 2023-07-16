@@ -133,7 +133,7 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
         self, narration_result: str, proposal: Proposal, proposal_id: int
     ):
         await self._send_chunked(
-            f'Chose action {proposal_id} ({proposal.vote} votes): {proposal.message} | {narration_result}'
+            f'Choose action {proposal_id} ({proposal.vote} votes): {proposal.message} | {narration_result}'
         )
 
     async def _propose_story_action(self, story_action: str, author: str):
