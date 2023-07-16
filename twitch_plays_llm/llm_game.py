@@ -46,6 +46,10 @@ class TriDeque:
         # Re-insert it with the new priority
         self.push(memory)
 
+    def __iter__(self):
+        # Make the TriDeque iterable
+        return iter(self.data)
+
 class CharacterMemory:
     MAX_PAST_ACTIONS = 100  # maximum number of past actions to store in memory
 
@@ -73,6 +77,7 @@ class CharacterMemory:
     def add_past_action(self, action, priority=0):
         memory = Memory(action, priority)
         self.past_actions.push(memory)
+
 
 class LlmGameHooks:
     """
