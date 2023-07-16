@@ -61,6 +61,9 @@ class StoryGenerator:
                         'content': story_entry.narration_result,
                     }
                 ]
+        # Add character's past actions to the messages
+        for action in self.character_memory.past_actions:
+            messages.append({'role': 'user', 'content': action.content})
         messages.append({'role': 'user', 'content': story_action})
         return messages
 
@@ -86,4 +89,3 @@ class StoryGenerator:
                 narration_result=initial_prompt
             )
         ]
-
