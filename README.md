@@ -103,3 +103,6 @@ In summary, the TriDeque class is a custom data structure used to efficiently st
 
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/2e75d04f-3fbc-4fbe-a52d-07701bf29d2d)
 
+![image](https://github.com/graylan0/twitch_time/assets/34530588/5d758d4a-c66c-4d87-846e-cc2b0e39ae11)
+
+
