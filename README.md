@@ -100,9 +100,7 @@ The CharacterMemory class also includes methods for writing the character's thou
 
 In summary, the TriDeque class is a custom data structure used to efficiently store and manage the character's memories based on their priority, and the CharacterMemory class is used to store and manage the character's attributes, past actions, and thoughts.
 
+![image](https://github.com/graylan0/twitch_time/assets/34530588/db694b4a-8322-4070-9c1f-a7b6d71a07f3)
 
-![image](https://github.com/graylan0/twitch_time/assets/34530588/2e75d04f-3fbc-4fbe-a52d-07701bf29d2d)
-
-![image](https://github.com/graylan0/twitch_time/assets/34530588/5d758d4a-c66c-4d87-846e-cc2b0e39ae11)
 
 
