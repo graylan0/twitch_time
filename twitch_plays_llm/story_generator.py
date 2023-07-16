@@ -2,6 +2,7 @@ import openai
 from asgiref.sync import sync_to_async
 from .models import StoryEntry
 
+
 class StoryGenerator:
     def __init__(self, character_memory):
         self.character_memory = character_memory
@@ -23,7 +24,7 @@ class StoryGenerator:
                     5. The prompt should be only 3 - 5 sentences long."""
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
-            messages = self.construct_prompt_messages(rules),
+            messages=self.construct_prompt_messages(rules),
         )
         initial_prompt = response['choices'][0]['message']['content']
         return initial_prompt
@@ -53,7 +54,8 @@ class StoryGenerator:
         ]
         for story_entry in self.past_story_entries:
             if story_entry.story_action:
-                messages += [{'role': 'user', 'content': story_entry.story_action}]
+                messages += [{'role': 'user',
+                              'content': story_entry.story_action}]
             if story_entry.narration_result:
                 messages += [
                     {
@@ -76,9 +78,17 @@ class StoryGenerator:
         )
         next_narration = response['choices'][0]['message']['content']
         self.past_story_entries.append(
-            StoryEntry(story_action=story_action, narration_result=next_narration)
+            StoryEntry(story_action=story_action,
+                       narration_result=next_narration)
         )
         return next_narration
+
+    @sync_to_async
+    def generate_image_prompt(self):
+        """Generates a prompt for DALL-E based on the current scene"""
+        # Use the last narration result as the scene description
+        scene_description = self.past_story_entries[-1].narration_result
+        return scene_description
 
     def reset(self):
         self.past_story_entries = []  # Reset it before calling construct_initial_prompt
@@ -89,3 +99,4 @@ class StoryGenerator:
                 narration_result=initial_prompt
             )
         ]
+
