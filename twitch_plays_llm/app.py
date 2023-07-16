@@ -48,3 +48,9 @@ def get_proposals() -> List[Proposal]:
 def get_story_history() -> List[StoryEntry]:
     game: LlmGame = app.state.game
     return game.generator.past_story_entries
+
+@app.get('/vote-time-remaining')
+def get_vote_time_remaining():
+    game: LlmGame = app.state.game
+    remaining_time = game.calculate_remaining_time()
+    return {"remaining_time": remaining_time}

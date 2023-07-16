@@ -29,17 +29,24 @@ class TriDeque:
         index = bisect.bisect([m.priority for m in self.data], memory.priority)
         self.data.insert(index, memory)
 
-    def remove(self, memory):
-        # Remove a specific memory item
-        self.data.remove(memory)
+    def remove(self, content):
+        # Remove a memory based on its content
+        for memory in self.data:
+            if memory.content == content:
+                self.data.remove(memory)
+                break
 
-    def update_priority(self, memory, new_priority):
-        # Remove the memory item
-        self.remove(memory)
-        # Update its priority
-        memory.priority = new_priority
-        # Re-insert it with the new priority
-        self.push(memory)
+    def update_priority(self, content, new_priority):
+        # Update the priority of a memory based on its content
+        for memory in self.data:
+            if memory.content == content:
+                # Remove the memory
+                self.data.remove(memory)
+                # Update its priority
+                memory.priority = new_priority
+                # Re-insert it with the new priority
+                self.push(memory)
+                break
 
 class CharacterMemory:
     MAX_PAST_ACTIONS = 100  # maximum number of past actions to store in memory

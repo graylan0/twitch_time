@@ -1,6 +1,7 @@
 import asyncio
 import bisect
 import time
+from datetime import datetime, timedelta
 from collections import deque
 from dataclasses import dataclass
 from typing import List, Dict
@@ -93,21 +94,32 @@ class LlmGameHooks:
 
 
 class LlmGame:
-    
     """
     Main game logic, handling story generation, proposal management and voting.
 
     Args:
         hooks: Handlers
     """
-
     def __init__(self, hooks: LlmGameHooks = LlmGameHooks()):
+        # other initializations...
+        self.vote_start_time = None
+        self.vote_duration = timedelta(minutes=5)  # 5 minutes voting time, adjust as needed
         self.character_memory = CharacterMemory()  # Create a CharacterMemory object
         self.generator = StoryGenerator(self.character_memory)  # Pass it to the StoryGenerator
         self.background_task = None
         self.hooks = hooks
         self.proposals = []
         self.count_votes_event = asyncio.Event()
+
+    def start_vote(self):
+        self.vote_start_time = datetime.now()
+
+    def calculate_remaining_time(self):
+        if self.vote_start_time is None:
+            return None
+        elapsed_time = datetime.now() - self.vote_start_time
+        remaining_time = self.vote_duration - elapsed_time
+        return max(remaining_time.total_seconds(), 0)  # return 0 if the time is up        
 
     @property
     def initial_story_message(self) -> str:
