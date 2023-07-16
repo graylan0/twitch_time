@@ -17,7 +17,7 @@ function App() {
   const [proposals, setProposals] = useState([]);
   const [storyHistory, setStoryHistory] = useState([]);
   const [timeInfo, setTimeInfo] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);  // New state variable for the image URL
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,6 +29,9 @@ function App() {
 
       const timeInfo = await axios.get('http://localhost:9511/vote-time-remaining')
       setTimeInfo(timeInfo.data);
+
+      const imageRes = await axios.post('http://localhost:9511/generate-image');
+      setImage(imageRes.data.image);
     }
 
     fetchData();  // Fetch data immediately on component mount
@@ -54,14 +57,6 @@ function App() {
   };
 
   const totalVotes = Math.max(1, proposals.map(x => x.vote).reduce((a, b) => a + b, 0));
-
-  // New function to generate an image
-  async function generateImage(prompt) {
-    const response = await axios.post('http://localhost:8000/generate-image', { prompt });
-    const imageUrl = response.data.image_url;
-    setImageUrl(imageUrl);  // Update the image URL state variable
-  }
-
   return (
     <div className="site-container">
       <div className="page-column main-column">
@@ -72,8 +67,7 @@ function App() {
             <p>{entry.narration_result}</p>
           </div>
         ))}
-        {/* New: Display the generated image */}
-        {imageUrl && <img src={imageUrl} alt="Generated" />}
+        {image && <img src={image} alt="Generated scene" />}
       </div>
 
       <div className="page-column chat-column">
