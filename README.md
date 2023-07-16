@@ -123,3 +123,7 @@ The get_memory_prompt method generates a prompt for the OpenAI API based on the 
 The CharacterMemory class also includes methods for writing the character's thoughts to a file and reading them back. This could be used to add more depth to the character and make the game more immersive.
 
 In summary, the TriDeque class is a custom data structure used to efficiently store and manage the character's memories based on their priority, and the CharacterMemory class is used to store and manage the character's attributes, past actions, and thoughts.
+
+
+![image](https://github.com/graylan0/twitch_time/assets/34530588/2e75d04f-3fbc-4fbe-a52d-07701bf29d2d)
+
