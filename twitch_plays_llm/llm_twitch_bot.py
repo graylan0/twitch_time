@@ -46,7 +46,7 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
         )
         self.game = llm_game
         self.channel: Optional[Channel] = None
-        self.viewer_points = {}
+        
 
     async def event_ready(self):
         """Function that runs when bot connects to server"""
@@ -63,23 +63,11 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
 
     @commands.command()
     async def action(self, ctx: commands.Context):
-        """Trigger for user to perofrm an action within the game"""
+        """Trigger for user to perform an action within the game"""
         story_action = self._extract_message_text(ctx)
         user = ctx.author.name
-        if user not in self.viewer_points or self.viewer_points[user] < 100:
-            await self._send(f'{user} does not have enough points to perform an action. Try voting for someone else!')
-        else:
-            self.viewer_points[user] -= 100
-            await self._propose_story_action(story_action, user)
+        await self._propose_story_action(story_action, user)
 
-    @commands.command()
-    async def points(self, ctx: commands.Context):
-        """Add command to check points (command)"""
-        user_id = ctx.author.name
-        if user_id in self.viewer_points:
-            await self._send(f'{user_id} has {self.viewer_points[user_id]} points')
-        else:
-            await self._send(f'{user_id} has 0 points')
 
     @commands.command()
     async def say(self, ctx: commands.Context):
@@ -124,39 +112,16 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
             return
         self.game.end_vote()
 
-    @commands.command()
-    async def givepoints(self, ctx: commands.Context):
-        """Give points to a user"""
-        #!givepoints <user> <points>
-        if not ctx.author.is_mod:
-            await self._send(ctx.author.name + ', You are not a mod')
-            return
-        else:
-            user = ctx.author.name
-            #debug later
-            message_split = ctx.message.content.split()
-            user = message_split[1]
-            points = message_split[2]
-            self.viewer_points[user] += points
-            await self._send(f'{user} was given {points} points ')
 
     # --- Other Methods ---
 
     async def _vote(self, ctx: commands.Context, weight: int = 1):
         """Trigger for user to vote on the next action"""
         vote_option_str = self._extract_message_text(ctx)
-        user = ctx.author.name
 
         try:
             proposal = self.game.vote(int(vote_option_str))
             new_count = proposal.vote
-            proposer = proposal.user
-            if user != proposer:
-                if user in self.viewer_points:
-                    self.viewer_points[user] += 100
-                else:
-                    self.viewer_points[user] = 100
-                
         except ValueError:
             await self._send(f'Invalid vote option: {vote_option_str}')
         else:
@@ -194,3 +159,4 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
 
     async def _send(self, message: str):
         await self.channel.send(message)
+
