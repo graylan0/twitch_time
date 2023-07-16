@@ -1,13 +1,12 @@
 import asyncio
 import openai
 from typing import List
-
 from fastapi import FastAPI
-
 from .llm_game import LlmGame
+from .llm_game import CharacterMemory
 from .llm_twitch_bot import LlmTwitchBot
 from .models import Proposal, StoryEntry
-
+from .story_generator import StoryGenerator
 
 app = FastAPI()
 
@@ -55,12 +54,23 @@ def get_vote_time_remaining():
     remaining_time = game.calculate_remaining_time()
     return {"remaining_time": remaining_time}
 
-@app.post('/generate-image')
-async def generate_image(prompt: str):
-    response = openai.Image.create(
-        prompt=prompt,
+@app.post("/generate-image")
+async def generate_image():
+    # Create a CharacterMemory and StoryGenerator instance
+    character_memory = CharacterMemory()
+    generator = StoryGenerator(character_memory)
+
+    # Generate a description of the current scene
+    scene_description = await generator.generate_image_prompt()
+
+    # Send this description to the DALL-E API
+    loop = asyncio.get_event_loop()
+    response = await loop.run_in_executor(None, lambda: openai.Image.create(
+        prompt=scene_description,
         n=1,
-        size="640x840"
-    )
-    image_url = response['data'][0]['url']
-    return {'image_url': image_url}
+        size="1024x1024"
+    ))
+
+    # Return the generated image
+    return {"image": response['data'][0]['url']}
+
