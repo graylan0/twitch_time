@@ -1,5 +1,5 @@
 import asyncio
-
+import openai
 from typing import List
 
 from fastapi import FastAPI
@@ -54,3 +54,13 @@ def get_vote_time_remaining():
     game: LlmGame = app.state.game
     remaining_time = game.calculate_remaining_time()
     return {"remaining_time": remaining_time}
+
+@app.post('/generate-image')
+async def generate_image(prompt: str):
+    response = openai.Image.create(
+        prompt=prompt,
+        n=1,
+        size="640x840"
+    )
+    image_url = response['data'][0]['url']
+    return {'image_url': image_url}
