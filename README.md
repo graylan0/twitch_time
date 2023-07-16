@@ -57,26 +57,6 @@ isort . --profile attrs; black . --line-length 88
 ```
 
 
-I'm sorry, but it seems like the file twitch_chat.py does not exist in the repository. The files we have from the repository are:
-
-__init__.py
-__main__.py
-app.py
-character_memory.py
-config.py
-llm_game.py
-llm_twitch_bot.py
-models.py
-story_generator.py
-Please let me know how you'd like to proceed.
-
-
-
-
-
-User
-explain it 2000 words and in depth how each component works. part one of 1
-ChatGPT
 The codebase for the Twitch Plays LLM Time Traveler game is divided into several Python files, each with its own specific purpose. Here's an overview of each file and its role in the application:
 
 __init__.py: This is an empty file that indicates that the directory should be treated as a Python package. This allows the modules within the directory to be imported elsewhere in the application.
@@ -102,10 +82,6 @@ The application works by running a Twitch bot that listens for messages in the T
 
 
 
-
-User
-how does trieque and character meomr work exactly
-ChatGPT
 The TriDeque and CharacterMemory classes are key components of the Twitch Plays LLM Time Traveler game. Let's dive into how they work:
 
 TriDeque: This class is a custom data structure that combines the properties of a deque (double-ended queue) and a priority queue. A deque is a type of queue in which elements can be added or removed from either end (front or rear), and a priority queue is a type of queue where elements are served (i.e., removed) based on their priority instead of their order in the queue.
