@@ -1,5 +1,5 @@
 # Twitch Time
-*A collaborative time traveling GPT + Image Model Game
+A collaborative time traveling GPT + Image Model Game
 
 
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/a0d15950-69db-4f19-9413-e95bf0dc7a2c)
