@@ -31,7 +31,7 @@ This project is a standard Python package and can be installed via `pip`. View b
 3. Run the executable:
    ```powershell
    # Make sure to run beforehand: .venv\Scripts\activate
-   twitch-plays-llm -h  # View the available commands
+   twitch-plays-llm -run # View the available commands
    ```
 
 ### Linux / Mac
