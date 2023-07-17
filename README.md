@@ -51,7 +51,7 @@ This project is a standard Python package and can be installed via `pip`. View b
 3. Run the executable:
    ```bash
    # Make sure to run beforehand: source .venv/bin/activate
-   twitch-plays-llm -h  # View the available commands
+   twitch-plays-llm -run  # Run the Exe
    ```
 
 ### Formatting and linting
