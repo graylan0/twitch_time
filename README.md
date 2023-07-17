@@ -1,7 +1,11 @@
-# Storyteller
-*A collaborative twitch-based choose-your-own-adventure game*
+# Twitch Time
+*A collaborative time traveling GPT + Image Model Game
 
-Twitch Plays Llm a text-based choose-your-own-adventure game (ie. AI dungeon) set within a specific theme. For the time travel theme, the main character is a timem traveler vising a historic time period with the goal of altering some historic event. The game is played collaboratively through twitch chat. Read more about the vision for this project within [this document](https://docs.google.com/document/d/10TJ-P2iRqNIOWyQ5PRzcVnN7VBCprzPSB9CFGy_-eDo/edit).
+
+![image](https://github.com/graylan0/twitch_time/assets/34530588/a0d15950-69db-4f19-9413-e95bf0dc7a2c)
+
+
+Twitch Time is a text-based choose-your-own-adventure game (ie. Back to the Future) set within a specific theme. For the time travel theme, the main character is a time traveler visitng a historic time period. The game is played collaboratively through twitch chat. Read more about the vision for this project within [this document](https://docs.google.com/document/d/10TJ-P2iRqNIOWyQ5PRzcVnN7VBCprzPSB9CFGy_-eDo/edit).
 
 
 Welcome to the Storyteller! The goal of this game is to collaboratively create a story. At each turn, the user says an action and the bot replies with a short continuation of the story outlining the events that happen in the story based on the action the user performed. The user can then vote on the next action to perform. The bot will then continue the story based on the action with the most votes. To perform an action, type "!action <action>". To say something, type "!say <message>". To vote on the next action, type "!vote <number>".'
