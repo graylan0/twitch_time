@@ -20,6 +20,8 @@ body {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  height: 100vh; /* Add this line */
+  background-size: cover;
 }
 
 .page-column {

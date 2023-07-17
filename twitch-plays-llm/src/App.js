@@ -21,25 +21,42 @@ function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const proposalsRes = await axios.get('http://localhost:9511/proposals');
-      setProposals(proposalsRes.data);
-
-      const storyHistoryRes = await axios.get('http://localhost:9511/story-history');
-      setStoryHistory(storyHistoryRes.data);
-
-      const timeInfo = await axios.get('http://localhost:9511/vote-time-remaining')
-      setTimeInfo(timeInfo.data);
-
-      const imageRes = await axios.post('http://localhost:9511/generate-image');
-      setImage(imageRes.data.image);
+      try {
+        const proposalsRes = await axios.get('http://localhost:9511/proposals');
+        setProposals(proposalsRes.data);
+  
+        const storyHistoryRes = await axios.get('http://localhost:9511/story-history');
+        setStoryHistory(storyHistoryRes.data);
+  
+        const timeInfo = await axios.get('http://localhost:9511/vote-time-remaining')
+        setTimeInfo(timeInfo.data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
     }
-
+  
+    async function fetchImage() {
+      try {
+        const imageRes = await axios.post('http://localhost:9511/generate-image');
+        setImage(imageRes.data.image);
+      } catch (error) {
+        console.error("Error fetching image: ", error);
+      }
+    }
+  
     fetchData();  // Fetch data immediately on component mount
+    fetchImage();  // Fetch image immediately on component mount
+  
     const intervalId = setInterval(fetchData, 1000);  // Fetch data every second
-
+    const imageIntervalId = setInterval(fetchImage, 140 * 1000);  // Fetch image every 140 seconds
+  
     // Clean up function: This will be run when the component is unmounted
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      clearInterval(imageIntervalId);
+    }
   }, []);
+  
 
   const badgeStyle = {
     display: "inline-block",
@@ -58,7 +75,7 @@ function App() {
 
   const totalVotes = Math.max(1, proposals.map(x => x.vote).reduce((a, b) => a + b, 0));
   return (
-    <div className="site-container">
+    <div className="site-container" style={{ backgroundImage: `url(${image})`, backgroundSize: 'cover' }}>
       <div className="page-column main-column">
         <h2 style={{ marginBottom: '0px' }}>Story</h2>
         {storyHistory.map((entry, index) => (
@@ -67,7 +84,6 @@ function App() {
             <p>{entry.narration_result}</p>
           </div>
         ))}
-        {image && <img src={image} alt="Generated scene" />}
       </div>
 
       <div className="page-column chat-column">
@@ -76,7 +92,7 @@ function App() {
           {timeInfo ? <ProgressBar count={timeInfo.seconds_remaining} total={timeInfo.total_seconds} color='#eb9500' /> : proposals?.length ? <p>Loading...</p> : <p>No proposals.</p>}
         </div>
         {timeInfo && proposals.map((proposal, index) => (
-          <div key={index} style={{ position: 'relative' }} className="card response-card">
+          <div key={index} style={{ position: 'relative', backgroundColor: 'rgba(255, 255, 255, 0.5)' }} className="card response-card">
             <div>
               <p><b>{index + 1}: </b>{proposal.message}</p>
             </div>
