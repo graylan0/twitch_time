@@ -1,4 +1,9 @@
 # Twitch Time
+
+DEMO: Simulation of ANY PART NUMBER (With Space Time 4D Dimentional SYNC!) 
+
+![image](https://github.com/graylan0/twitch_time/assets/34530588/c0e711f3-eee0-4250-bc32-6e5460093acb)
+
 A collaborative time traveling GPT + Image Model Game
 
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/b85320db-0f1e-4a1d-a266-3e9f8a075029)
