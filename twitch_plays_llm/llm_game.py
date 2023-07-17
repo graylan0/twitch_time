@@ -9,7 +9,7 @@ from contextlib import suppress
 from .config import config
 from .models import Proposal
 from .story_generator import StoryGenerator
-
+from .trideque import TriDeque
 
 @dataclass
 class CharacterProfile:

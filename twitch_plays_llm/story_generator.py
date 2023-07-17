@@ -1,25 +1,26 @@
 import openai
 from asgiref.sync import sync_to_async
 from .models import StoryEntry
-
-
+from .trideque import TriDeque
 class StoryGenerator:
+    MAX_PAST_ENTRIES = 100  # maximum number of past entries to store in memory
+
     def __init__(self, character_memory):
         self.character_memory = character_memory
-        self.past_story_entries = []  # Define it before calling construct_initial_prompt
+        self.past_story_entries = TriDeque(self.MAX_PAST_ENTRIES)  # Initialize a TriDeque with a size of MAX_PAST_ENTRIES
         initial_prompt = self.construct_initial_prompt()
-        self.past_story_entries = [
+        self.past_story_entries.push(
             StoryEntry(
                 story_action='',
                 narration_result=initial_prompt
             )
-        ]
+        )
 
     def construct_initial_prompt(self):
-        rules = """Create a writing prompt to start an RPG text adventure game.  Adhere to the following rules:
-                    1. The story should take place in Baldur's Gate from Dungeons and Dragons' Forgotten Realms.
-                    2 You should describe the player's characteristics, where they are, what time period they are in, and what surrounds them.
-                    3. Keep it fun and light hearted. This isn't for a novel, it's for a game on Twitch.
+        rules = """Create a writing prompt to start an Multiverse text adventure game.  Adhere to the following rules:
+                    1. The story in a randomly generated location with 4 Dimentional Space Coordnates given to the Prompt.
+                    2. You should describe the player's characteristics, where they are, what time period they are in, and what surrounds them, their name, their age, their emotional coloring
+                    3. In the Game AI can Simulate SpaceTime and HyperTime.
                     4. Use the 2nd person perspective.
                     5. The prompt should be only 3 - 5 sentences long."""
         response = openai.ChatCompletion.create(
@@ -37,19 +38,16 @@ class StoryGenerator:
 
                             Presentation Rules:
 
-                            1. At each turn, the user says an action and you reply with a short continuation of the story outlining the events that happen in the story based on the action the user performed.
+                            1. At each turn, the user says an action and you reply with a multiverse generaiton portal forecasting events in the future based upon the events that happen in the story based on the action the user performed.
 
-                            2. Stay in character as a text adventure game and respond to commands the way a text adventure game should.
+                            2. Stay in character as a powerful high throughput multiverse simulator
 
                             Fundamental Game Mechanics:
 
-                            1. If an action is unsuccessful, respond with a relevant consequence.
+                            1. If an action is unsuccessful, respond with a relevant errorlog.
 
-                            2. Allow players to be creative, but nudge them towards the main quest. 
 
-                            Refer back to these rules after every prompt.
-
-                            Start Game.""",
+                            Start Simulator.""",
             },
         ]
         for story_entry in self.past_story_entries:
@@ -77,7 +75,7 @@ class StoryGenerator:
             messages=self.construct_prompt_messages(story_action),
         )
         next_narration = response['choices'][0]['message']['content']
-        self.past_story_entries.append(
+        self.past_story_entries.push(
             StoryEntry(story_action=story_action,
                        narration_result=next_narration)
         )
@@ -91,12 +89,11 @@ class StoryGenerator:
         return scene_description
 
     def reset(self):
-        self.past_story_entries = []  # Reset it before calling construct_initial_prompt
+        self.past_story_entries = TriDeque(self.MAX_PAST_ENTRIES)  # Reset it before calling construct_initial_prompt
         initial_prompt = self.construct_initial_prompt()
-        self.past_story_entries = [
+        self.past_story_entries.push(
             StoryEntry(
                 story_action='',
                 narration_result=initial_prompt
             )
-        ]
-
+        )

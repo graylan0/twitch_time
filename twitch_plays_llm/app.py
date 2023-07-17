@@ -68,9 +68,8 @@ async def generate_image():
     response = await loop.run_in_executor(None, lambda: openai.Image.create(
         prompt=scene_description,
         n=1,
-        size="1024x1024"
+        size="512x512"
     ))
 
     # Return the generated image
     return {"image": response['data'][0]['url']}
-

@@ -159,4 +159,3 @@ class LlmTwitchBot(commands.Bot, LlmGameHooks):
 
     async def _send(self, message: str):
         await self.channel.send(message)
-
