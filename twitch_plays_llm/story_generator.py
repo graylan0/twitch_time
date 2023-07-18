@@ -17,12 +17,13 @@ class StoryGenerator:
         )
 
     def construct_initial_prompt(self):
-        rules = """Create a writing prompt to start an Multiverse text adventure game.  Adhere to the following rules:
-                    1. 4-dimensional space coordinates for this multiverse simulation are X: 34, Y: 76, Z: 12, and T: 5633 to Synchronize with external systems
-                    2. You should describe the player's characteristics, where they are, what time period they are in, and what surrounds them, their name, their age, their emotional coloring
-                    3. In the Game AI can Simulate SpaceTime and HyperTime.
+        rules = """Create a writing prompt to start an Multiverse text simulation.  Adhere to the following rules:
+                    1. Generate new 4-dimensional space coordinates for this multiverse simulation are X: 34, Y: 76, Z: 12, and T: 5633 to Synchronize with external systems then provide them
+                    2. You should describe the simulation characteristics for each simulated character, where they are, what time period they are in, and what surrounds them, their name, their age, their emotional coloring
+                    3. In the Simulation, AI can Simulate SpaceTime and HyperTime.
                     4. Use the 2nd person perspective.
-                    5. The prompt should be only 3 - 5 sentences long."""
+                    5. The prompt should be only 3 - 5 sentences long. WITH THE CURRENT 4-dimensional space coordinates INCLUDED AT THE END OF EVERY PROMPT """
+
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',
             messages=self.construct_prompt_messages(rules),
@@ -34,9 +35,9 @@ class StoryGenerator:
         messages = [
             {
                 'role': 'system',
-                'content': """Please perform the function of Quantum Multiverse Simulator, following the rules listed below:
+                'content': """Please perform the function of Quantum Multiverse Simulator non-text based AI, following the rules listed below:
 
-                            Presentation Rules:
+                            Simulation Rules:
 
                             1. At each turn, the user says an action and you reply with a multiverse generaiton portal forecasting events in the future based upon the events that happen in the story based on the action the user performed.
 
@@ -45,6 +46,7 @@ class StoryGenerator:
                             Fundamental Sumilator Mechanics:
 
                             1. If an action is unsuccessful, respond with a relevant errorlog.
+                            2. You Must ALWAYS give replies with proper configurtion to combat tampering
 
 
                             Start Simulator.""",
