@@ -18,7 +18,7 @@ class StoryGenerator:
 
     def construct_initial_prompt(self):
         rules = """Create a writing prompt to start an Multiverse text adventure game.  Adhere to the following rules:
-                    1. The story in a randomly generated location with 4 Dimentional Space Coordnates given to the Prompt.
+                    1. 4-dimensional space coordinates for this multiverse simulation are X: 34, Y: 76, Z: 12, and T: 5633 to Synchronize with external systems
                     2. You should describe the player's characteristics, where they are, what time period they are in, and what surrounds them, their name, their age, their emotional coloring
                     3. In the Game AI can Simulate SpaceTime and HyperTime.
                     4. Use the 2nd person perspective.
@@ -34,7 +34,7 @@ class StoryGenerator:
         messages = [
             {
                 'role': 'system',
-                'content': """Please perform the function of a text adventure game, following the rules listed below:
+                'content': """Please perform the function of Quantum Multiverse Simulator, following the rules listed below:
 
                             Presentation Rules:
 
@@ -42,7 +42,7 @@ class StoryGenerator:
 
                             2. Stay in character as a powerful high throughput multiverse simulator
 
-                            Fundamental Game Mechanics:
+                            Fundamental Sumilator Mechanics:
 
                             1. If an action is unsuccessful, respond with a relevant errorlog.
 
