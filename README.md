@@ -1,5 +1,5 @@
 # Twitch Time
-DEMO: 4 Dimentional Space Tracking Working In Game;
+DEMO: 4 Dimentional SpaceTime Tracking Matrix (for character locations and remote data simulation system)
 
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/a678f5c4-6c0e-4b9c-95c9-47ae9738bd52)
 
