@@ -1,6 +1,6 @@
 # Twitch Time
 
-DEMO: Simulation of ANY PART NUMBER (With Space Time 4D Dimentional SYNC!) 
+DEMO: Simulation of ANY PART NUMBER (With Space Time 4D SYNC!) 
 
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/c0e711f3-eee0-4250-bc32-6e5460093acb)
 
