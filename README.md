@@ -1,4 +1,7 @@
 # Twitch Time
+DEMO: 4 Dimentional Space Tracking Working In Game;
+
+![image](https://github.com/graylan0/twitch_time/assets/34530588/a678f5c4-6c0e-4b9c-95c9-47ae9738bd52)
 
 DEMO: Simulation of ANY PART NUMBER (With Space Time 4D SYNC!) 
 
