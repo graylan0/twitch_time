@@ -11,6 +11,10 @@ A collaborative time traveling GPT + Image Model Game
 ![image](https://github.com/graylan0/twitch_time/assets/34530588/a0d15950-69db-4f19-9413-e95bf0dc7a2c)
 
 
+
+Gray00: Yes, it's the technically wrong filter. But it's still a honda fuel filter. Pretty good for Quantum Internet (Sim Internet)
+![image](https://github.com/graylan0/twitch_time/assets/34530588/ac01c015-8da0-4df3-ae49-7579aa24273b)
+
 Prompt DEMO:
 
 You find yourself in a desolate wasteland on the outskirts of a decaying city, with 4-dimensional space coordinates of X: 34, Y: 76, Z: 12, and T: 5632. You are a young and determined explorer named Alex, aged 25, with a sense of adventure and a longing for discovery. The air is thick with the scent of ash and decay, and a distant rumbling can be heard in the distance. As you look around, you see collapsed buildings, towering ruins, and an eerie silence that hangs in the air, painting the whole scene in a somber emotional coloring.
