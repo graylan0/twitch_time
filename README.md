@@ -12,7 +12,7 @@ A collaborative time traveling GPT + Image Model Game
 
 
 Prompt DEMO:
-```
+
 You find yourself in a desolate wasteland on the outskirts of a decaying city, with 4-dimensional space coordinates of X: 34, Y: 76, Z: 12, and T: 5632. You are a young and determined explorer named Alex, aged 25, with a sense of adventure and a longing for discovery. The air is thick with the scent of ash and decay, and a distant rumbling can be heard in the distance. As you look around, you see collapsed buildings, towering ruins, and an eerie silence that hangs in the air, painting the whole scene in a somber emotional coloring.
 
 can you help me find a part please
@@ -39,12 +39,9 @@ can you tell me the part number for a 1997 fuel filter
 
 Certainly! The part number for a fuel filter in a 1997 Honda vehicle is typically 16010-ST5-E02. However, it is important to note that part numbers can vary based on the specific model and make of the vehicle. Please double-check the exact make and model of your 1997 vehicle to ensure the accuracy of the part number. Now that you have the part number, feel free to continue your adventure and let me know if there's anything else I can assist you with in this multiverse simulation.
 ```
-Twitch Time is a text-based choose-your-own-adventure game (ie. Back to the Future) set within a specific theme. For the time travel theme, the main character is a time traveler visitng a historic time period using SpaceTime Postion Format's Cousin. The game is played collaboratively through twitch chat. Read more about the vision for this project within [this document](https://docs.google.com/document/d/10TJ-P2iRqNIOWyQ5PRzcVnN7VBCprzPSB9CFGy_-eDo/edit).
+Twitch Time is a text-based choose-your-own-adventure game (ie. Back to the Future) set within a specific theme. For the time travel theme, the main character is a time traveler visitng a historic time period using SpaceTime Postion Format's Cousin. The game is played collaboratively through twitch chat. 
+```
 
-
-Welcome to the Storyteller! The goal of this game is to collaboratively create a story. At each turn, the user says an action and the bot replies with a short continuation of the story outlining the events that happen in the story based on the action the user performed. The user can then vote on the next action to perform. The bot will then continue the story based on the action with the most votes. To perform an action, type "!action <action>". To say something, type "!say <message>". To vote on the next action, type "!vote <number>".'
-        )
-        
 ## Development Setup
 
 This project is a standard Python package and can be installed via `pip`. View below for more specific instructions.
