@@ -2,6 +2,9 @@
 OurUniverse:X: 34, Y: 76, Z: 12, and T: 5633.
 Honda Valve Cover Simulation
 
+
+![image](https://github.com/graylan0/twitch_time/assets/34530588/c0777b7d-cdd7-48af-b407-322c1934a1fd)
+
 ```
 Choose action 0 (0 votes): simulate a part number for a 2002 honda civic value cover | Accessing the Quantum Multiverse Simulator...
 
