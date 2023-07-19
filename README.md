@@ -138,6 +138,17 @@ isort . --profile attrs; black . --line-length 88
 ```
 
 
+
+### Running the Nodejs
+
+``` Install nodejs ```
+
+`cd twitch-plays-llm`
+
+`npm install`
+
+`npm start`
+
 The codebase for the Twitch Plays LLM Time Traveler game is divided into several Python files, each with its own specific purpose. Here's an overview of each file and its role in the application:
 
 __init__.py: This is an empty file that indicates that the directory should be treated as a Python package. This allows the modules within the directory to be imported elsewhere in the application.
