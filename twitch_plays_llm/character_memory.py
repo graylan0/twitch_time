@@ -49,7 +49,7 @@ class TriDeque:
                 break
 
 class CharacterMemory:
-    MAX_PAST_ACTIONS = 100  # maximum number of past actions to store in memory
+    MAX_PAST_ACTIONS = 1000  # Increase to 1000
     PAST_ACTIONS_FILE = os.path.join(os.path.dirname(__file__), 'datafiles', 'past_actions.txt')  # file to store older actions
 
     def __init__(self):
@@ -64,6 +64,11 @@ class CharacterMemory:
         past_actions_path.parent.mkdir(parents=True, exist_ok=True)  # Create the directory if it doesn't exist
         past_actions_path.touch(exist_ok=True)  # Create the file if it doesn't exist
 
+        # Load past actions from the file
+        with open(self.PAST_ACTIONS_FILE, 'r') as f:
+            for line in f:
+                action = line.strip()
+                self.add_past_action(action)
 
     def update_attribute(self, attribute, value):
         self.attributes[attribute] = value
@@ -83,3 +88,26 @@ class CharacterMemory:
     def add_past_action(self, action, priority=0):
         memory = Memory(action, priority)
         self.past_actions.push(memory)
+
+        # Write the action to the past actions file
+        with open(self.PAST_ACTIONS_FILE, 'a') as f:
+            f.write(f'{action}\n')
+
+    def clear_past_actions(self):
+        # Clear the past actions in memory
+        self.past_actions = TriDeque(self.MAX_PAST_ACTIONS)
+
+        # Clear the past actions file
+        with open(self.PAST_ACTIONS_FILE, 'w') as f:
+            pass
+
+    def save_state(self, filename):
+        # Save the bot's current state to a file
+        with open(filename, 'w') as f:
+            f.write(f'Color code: {self.color_code}\n')
+            f.write(f'Attributes: {self.attributes}\n')
+            f.write(f'Profile: {self.profile}\n')
+            f.write('Past actions:\n')
+            for memory in self.past_actions:
+                f.write(f'  {memory.content}\n')
+
